@@ -12,6 +12,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
+    <script src="./home.js"></script>
+
     <!-- Links -->
     <link rel="stylesheet" href="css/camera.css">
     <link rel="stylesheet" href="css/search.css">
@@ -22,7 +24,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/rd-smoothscroll.min.js"></script>
-    <script src="./home.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -36,7 +37,7 @@
     <![endif]-->
     <script src='js/device.min.js'></script>
   </head>
-  <body>
+  <body onload="load();">
   <div class="page">
   <!--========================================================
                             HEADER
@@ -53,7 +54,7 @@
         <div class="help-box text-right">
           <p>Telefono</p>
           <a href="callto:#" id="telefono"></a>
-          <small><span>Horario:</span>  <span id="horario">6am-4pm PST M-Th; &nbsp;6am-3pm PST Fri</span></small>
+          <small><span>Horario:</span>  <span id="horario"></span></small>
         </div>
       </div>
      
@@ -91,8 +92,8 @@
 
     <main>        
 
-      <section class="well well1 well1_ins1">
-        <div class="camera_container">
+      <section id="galery" class="well well1 well1_ins1">
+        <div id="camera-container" class="camera_container">
           <div id="camera" class="camera_wrap">
             <div data-src="images/page-1_slide1.jpg">
               <div class="camera_caption fadeIn">
@@ -109,39 +110,63 @@
                 </div>
               </div>
             </div>
-            <div data-src="images/page-1_slide2.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron2">
-                  <em>
-                    Titulo Noticia
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="#" class="btn-link hov_prime fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="images/page-1_slide3.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron">
-                  <em>
-                    Titulo Noticia
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="#" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
+            <script>
+              (() => {
+
+                $('camera').camera({
+                  
+                })
+
+                Array.from({
+                  length: 5
+                }).forEach((value, index) => {
+
+                  const div = document.createElement("div");
+
+                  div.setAttribute("data-src", "images/page-1_slide1.jpg")
+
+                  const cameraCaption = document.createElement("div");
+                  cameraCaption.setAttribute("class", "camera_caption fadeIn")
+
+                  const jumbotron = document.createElement("div");
+                  jumbotron.setAttribute("class", "jumbotron jumbotron1")
+
+                  const em = document.createElement("em");
+
+                  const p = document.createElement("p");
+                  p.innerText = "Resumen";
+
+                  const aInternal = document.createElement("a");
+                  aInternal.setAttribute("href", "detalle.html")
+                  aInternal.setAttribute("class", "btn-link fa-angle-right")
+
+                  const wrap = document.createElement("div");
+                  wrap.setAttribute("class", "wrap")
+
+                  const a = document.createElement("a");
+                  a.setAttribute("href", "detalle.html")
+                  a.innerText = "Titutlo"
+
+                  wrap.appendChild(p);
+                  wrap.appendChild(aInternal);
+                  em.appendChild(a);
+                  jumbotron.appendChild(em);
+                  jumbotron.appendChild(wrap);
+                  cameraCaption.appendChild(jumbotron);
+                  div.appendChild(cameraCaption);
+
+                  console.log(div.outerHTML)
+
+                  
+
+                  document.getElementById("camera").append(div);
+                })
+              })()
+            </script>
+          
+            
           </div>
         </div>
-      
       </section>
       
       <section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
@@ -192,7 +217,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/tm-scripts.js"></script>    
   <!-- </script> -->
-
 
   </body>
 </html>
