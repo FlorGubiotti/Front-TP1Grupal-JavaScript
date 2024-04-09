@@ -31,11 +31,43 @@ const load = () => {
         .then(async (res) => {
             const response = await res.json();
 
-            console.log(response)
+            const camera_captions = document.querySelectorAll(".camera_caption");
 
-            response.forEach((element, index) => {
-                
-            })
+            for (let i = 0; i < camera_captions.length; i++) {
+            
+                const noticia = response[i];
+                const camera_caption = camera_captions[i];
+
+                const slide = document.querySelector(`.cameraSlide_${i}`)
+                slide.innerHTML = `
+                    <img src="https://img.freepik.com/foto-gratis/majestuoso-pico-montana-tranquilo-paisaje-invernal-generado-ia_188544-15662.jpg" class="imgLoaded" style="visibility: visible; height: 507.262px; margin-left: 0px; margin-top: -78.631px; position: absolute; width: 887px;" data-alignment="" data-portrait="" width="626" height="358">
+                    <div class="camerarelative" style="width: 887px; height: 350px;"></div>
+                `
+
+                if(noticia !== undefined) {
+                    const imagen = document.getElementsByClassName("imgLoaded")[i];
+
+                    console.log(i, imagen, noticia)
+
+                    if (imagen !== undefined) {
+
+                        imagen.src = `${noticia.imagenNoticia}`;
+                        camera_caption.querySelector(".tituloNoticia").textContent = noticia.tituloNoticia;
+
+                        camera_caption.querySelector(
+                            ".tituloNoticia"
+                        ).href = `detalle.html?id=${noticia.id}`;
+                        camera_caption.querySelector(".resumenNoticia").textContent =
+                            noticia.resumenNoticia;
+                        camera_caption.querySelector(
+                            ".btn-link"
+                        ).href = `detalle.html?id=${noticia.id}`;
+                    } else {
+                        camera_caption.style.display = "none";
+                    }
+                }
+
+            }
 
         })
         .catch((err) => {
