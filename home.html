@@ -22,7 +22,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/rd-smoothscroll.min.js"></script>
-    <script src="./home.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -53,7 +52,7 @@
         <div class="help-box text-right">
           <p>Telefono</p>
           <a href="callto:#" id="telefono"></a>
-          <small><span>Horario:</span>  <span id="horario">6am-4pm PST M-Th; &nbsp;6am-3pm PST Fri</span></small>
+          <small><span>Horario:</span>  <span id="horario"></span></small>
         </div>
       </div>
      
@@ -90,57 +89,76 @@
 
     <main>        
 
-      <section class="well well1 well1_ins1">
-        <div class="camera_container">
+      <section id="galery" class="well well1 well1_ins1">
+        <div id="camera-container" class="camera_container">
           <div id="camera" class="camera_wrap">
-            <div data-src="images/page-1_slide1.jpg">
+            <div data-src="images/page-1_slide1.jpg" class="imagen">
               <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron1">
+                <div class="jumbotron jumbotron0" style="width: 80%">
                   <em>
-                    <a href="detalle.html">Titulo Noticia</a>
+                    <a href="detalle.html" class="tituloNoticia"></a>
                   </em>
                   <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
-                    <a href="detalle.html" class="btn-link fa-angle-right"></a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div data-src="images/page-1_slide2.jpg">
-              <div class="camera_caption fadeIn">
-                <div class="jumbotron jumbotron2">
-                  <em>
-                    Titulo Noticia
-                  </em>
-                  <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
+                    <p class="resumenNoticia"></p>
                     <a href="#" class="btn-link hov_prime fa-angle-right"></a>
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>
-            <div data-src="images/page-1_slide3.jpg">
+            <div data-src="images/page-1_slide1.jpg" class="imagen">
               <div class="camera_caption fadeIn">
-                <div class="jumbotron">
+                <div class="jumbotron jumbotron2" style="width: 80%">
                   <em>
-                    Titulo Noticia
+                    <a href="detalle.html" class="tituloNoticia"></a>
                   </em>
                   <div class="wrap">
-                    <p>
-                      Resumen
-                    </p>
+                    <p class="resumenNoticia"></p>
+                    <a href="#" class="btn-link hov_prime fa-angle-right"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-src="images/page-1_slide1.jpg" class="imagen">
+              <div class="camera_caption fadeIn">
+                <div class="jumbotron jumbotron3" style="width: 80%">
+                  <em>
+                    <a href="detalle.html" class="tituloNoticia"></a>
+                  </em>
+                  <div class="wrap">
+                    <p class="resumenNoticia"></p>
                     <a href="#" class="btn-link fa-angle-right"></a>
-                  </div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-src="images/page-1_slide2.jpg" class="imagen">
+              <div class="camera_caption fadeIn">
+                <div class="jumbotron jumbotron4" style="width: 80%">
+                  <em>
+                    <a href="detalle.html" class="tituloNoticia"></a>
+                  </em>
+                  <div class="wrap">
+                    <p class="resumenNoticia"></p>
+                    <a href="#" class="btn-link fa-angle-right"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-src="images/page-1_slide3.jpg" class="imagen">
+              <div class="camera_caption fadeIn">
+                <div class="jumbotron jumbotron4" style="width: 80%">
+                  <em>
+                    <a href="detalle.html" class="tituloNoticia"></a>
+                  </em>
+                  <div class="wrap">
+                    <p class="resumenNoticia"></p>
+                    <a href="#" class="btn-link fa-angle-right"></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
       </section>
       
       <section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
@@ -193,5 +211,12 @@
   <!-- </script> -->
 
 
+    <script src="./home.js"></script> 
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        load();
+      });
+    </script>
   </body>
 </html>

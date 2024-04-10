@@ -1,6 +1,10 @@
-(() => {
+const load = () => {
 
-    fetch("http://localhost:8080/empresas/buscar-by-id/1")
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    console.log(id);
+
+    fetch("http://localhost:8080/empresas/buscar/" + id)
         .then(async (res) => {
             const response = await res.json();
 
@@ -24,5 +28,4 @@
         })
     
 
-})()
 
