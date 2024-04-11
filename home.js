@@ -31,6 +31,8 @@ const load = () => {
         .then(async (res) => {
             const response = await res.json();
 
+            console.log(response)
+
             const camera_captions = document.querySelectorAll(".camera_caption");
 
             response.sort((a, b) => b.id - a.id)
@@ -42,7 +44,7 @@ const load = () => {
 
                 const slide = document.querySelector(`.cameraSlide_${i}`)
                 slide.innerHTML = `
-                    <img src="https://img.freepik.com/foto-gratis/majestuoso-pico-montana-tranquilo-paisaje-invernal-generado-ia_188544-15662.jpg" class="imgLoaded" style="visibility: visible; height: 507.262px; margin-left: 0px; margin-top: -78.631px; position: absolute; width: 887px;" data-alignment="" data-portrait="" width="626" height="358">
+                    <img src="picture/${noticia.imagenNoticia}" class="imgLoaded" style="visibility: visible; height: 507.262px; margin-left: 0px; margin-top: -78.631px; position: absolute; width: 887px;" data-alignment="" data-portrait="" width="626" height="358">
                     <div class="camerarelative" style="width: 887px; height: 350px;"></div>
                 `
 
@@ -51,7 +53,7 @@ const load = () => {
 
                     if (imagen !== undefined) {
 
-                        imagen.src = `${noticia.imagenNoticia}`;
+                        imagen.src = `picture/${noticia.imagenNoticia}`;
                         camera_caption.querySelector(".tituloNoticia").textContent = noticia.tituloNoticia;
 
                         camera_caption.querySelector(
