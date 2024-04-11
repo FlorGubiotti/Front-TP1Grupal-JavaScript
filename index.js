@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 crearNoticia(noticiaData);
                 // Manejar la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
                 console.log('Imagen subida exitosamente:', data);
-                alert('Imagen subida exitosamente');
+                // alert('Imagen subida exitosamente');
                 // Redirigir a otra página si es necesario
             })
             .catch(error => {
