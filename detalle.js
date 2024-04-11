@@ -3,6 +3,8 @@ const loadDetails = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     console.log(id);
+    document.getElementById("inicioId").setAttribute("href", "home.html?id="+id);
+    document.getElementById("empresa_id").value = id;
 
     fetch("http://localhost:8080/noticias/buscar/" + id)
         .then(async (res) => {
@@ -26,6 +28,10 @@ const loadDetails = () => {
 
         })
 
-   
-
 }
+const form = document.querySelector('.search-form');
+
+form.addEventListener('submit', async function (event) {
+    console.log(222)
+    
+})

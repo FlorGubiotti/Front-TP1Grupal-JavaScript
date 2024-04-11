@@ -3,6 +3,8 @@ const load = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     console.log(id);
+    document.getElementById("empresa_id").value = id;
+
 
     fetch("http://localhost:8080/empresas/buscar/" + id)
         .then(async (res) => {

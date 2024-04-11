@@ -62,7 +62,7 @@
             <div class="">
               <ul class="nav navbar-nav sf-menu sf-js-enabled sf-arrows" data-type="navbar">
                 <li style="list-style: none;" class="active">
-                  <a href="home.html">INICIO</a>
+                  <a href="home.html" id="inicioId">INICIO</a>
                 </li>
                 <li style="list-style: none;">
                   <a href="./">LISTA EMPRESAS</a>
@@ -71,13 +71,14 @@
             </div>
           </nav>
           <form class="search-form" action="buscador.html" method="GET" accept-charset="utf-8">
+            <input type="hidden" id="empresa_id" name="empresa_id" value="">
             <label class="search-form_label">
-              <input class="search-form_input" type="text" name="buscar" autocomplete="off"
-                placeholder="Ingrese Texto" />
-              <span class="search-form_liveout"></span>
+            <input class="search-form_input" type="text" name="buscar" autocomplete="off" placeholder="Ingrese Texto"/>
+            <span class="search-form_liveout"></span>
             </label>
             <button class="search-form_submit fa-search" type="submit"></button>
           </form>
+                 
 
         </div>
 
