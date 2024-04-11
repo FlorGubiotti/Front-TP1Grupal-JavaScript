@@ -2,169 +2,146 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado de Empresas</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.tiny.cloud/1/8xrnyhh8ngm1n9qkk2ln196xy9qxocubm1cxkkpjn72zbq0z/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-  <style>
-    /* Estilos personalizados */
-    body {
-      background-image: url('http://4.bp.blogspot.com/-rf5TPOMiIVQ/VZJ6U22eecI/AAAAAAAAAfA/E1QP30963M0/s1600/Foto-construir-una-gran-empresa-6.png');
-      background-size: cover;
-      background-position: center;
-      min-height: 100vh;
-      padding: 50px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container {
-      max-width: 800px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 30px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    th,
-    td {
-      padding: 15px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-      background-color: #fff;
-    }
-
-    a {
-      text-decoration: none;
-      color: blue;
-    }
-
-    .create-button {
-      margin-top: 20px;
-    }
-  </style>
-  <script src="index.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listado de Empresas</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  /* Estilos personalizados */
+  body {
+    background-image: url('http://4.bp.blogspot.com/-rf5TPOMiIVQ/VZJ6U22eecI/AAAAAAAAAfA/E1QP30963M0/s1600/Foto-construir-una-gran-empresa-6.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+  }
+  h1 {
+    color: #333;
+    margin-bottom: 30px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  th, td {
+    padding: 15px;
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+    background-color: #fff;
+  }
+  a {
+    text-decoration: none;
+    color: blue;
+  }
+  .create-button {
+    margin-top: 20px;
+  }
+</style>
+<script src="index.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Listado de Empresas</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>EMPRESA</th>
-          <th>VER PÁGINA</th>
-        </tr>
-      </thead>
-      <tbody id="tabla-empresas">
-      </tbody>
-    </table>
-    <button class="create-button btn btn-primary" id="crear-empresa-btn">Crear Empresa</button>
-    <button class="create-button btn btn-primary" id="crear-noticia-btn">Crear Noticia</button>
-  </div>
+<div class="container">
+  <h1>Listado de Empresas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>EMPRESA</th>
+        <th>VER PÁGINA</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-empresas">
+    </tbody>
+  </table>
+  <button class="create-button" id="crear-empresa-btn">Crear Empresa</button>
 
-  <!-- Bootstrap JS (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
 
-  <script>
-    // Al hacer clic en el botón "Crear Empresa", muestra el modal
-    document.getElementById("crear-empresa-btn").addEventListener("click", function () {
-      var myModal = new bootstrap.Modal(document.getElementById("agregarProductoModal"));
-      myModal.show();
-    });
+<!-- Bootstrap JS (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    // Al hacer clic en el botón "Crear Noticia", muestra el modal
-    document.getElementById("crear-noticia-btn").addEventListener("click", function () {
-      var myModal = new bootstrap.Modal(document.getElementById("crearNoticiaModal"));
-      myModal.show();
-    });
-  </script>
+<script>
+  // Al hacer clic en el botón "Crear Empresa", muestra el modal
+  document.getElementById("crear-empresa-btn").addEventListener("click", function() {
+    var myModal = new bootstrap.Modal(document.getElementById("agregarProductoModal"));
+    myModal.show();
+  });
+</script>
 
-
-  <!-- Modal HTML para crear noticias -->
-  <div class="modal fade" id="crearNoticiaModal" tabindex="-1" aria-labelledby="crearNoticiaModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="crearNoticiaModalLabel">Creando Noticia</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col">
-              <h5>Datos:</h5>
-              <div style="margin-top: 20px;">
-                <div class="form-group">
-                  <label for="idEmpresa" class="form-label">Id Empresa</label>
-                  <select name="idEmpresa" id="idEmpresa" class="form-select" required>
-                    <option value="x" selected disabled>Seleccione la empresa a la que pertenece la noticia</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="tituloNoticia" class="form-label">Titulo Noticia</label>
-                  <input type="text" class="form-control" id="tituloNoticia" placeholder="Titulo de la Noticia"
-                    required>
-                </div>
-                <div class="form-group">
-                  <label for="resumenNoticia" class="form-label">Resumen Noticia</label>
-                  <input type="text" class="form-control" id="resumenNoticia" placeholder="Resumen de la Noticia"
-                    required>
-                </div>
-                <div class="form-group">
-                  <label for="imagen" class="form-label">Imagen</label>
-                  <input type="file" class="form-control" id="imagen" placeholder="Imagen de la Noticia">
-                </div>
-                <div class="form-group">
-                  <label for="publicada" class="form-label">Publicada</label>
-                  <input type="checkbox" id="publicada">
-                </div>
-                <div class="form-group">
-                  <textarea id="contenidoHTML"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="fechaPublicacion" class="form-label">Fecha de publicacion</label>
-                  <input type="date" class="form-control" id="fechaPublicacion" placeholder="Fecha de publicación"
-                    required>
-                </div>
-                <!-- Otras entradas de formulario para crear noticia -->
+<!-- Modal HTML -->
+<div class="modal fade" id="agregarProductoModal" tabindex="-1" aria-labelledby="agregarProductoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarProductoModalLabel">Creando Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <h3>Empresa</h3>
+            <div style="margin-top: 20px;">
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Denominacion</label>
+                <input type="text" class="form-control" id="denominacion" style="font-size: 14px;" placeholder="Empresa">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Telefono</label>
+                <input type="text" class="form-control" id="telefono" style="font-size: 14px;" placeholder="+54">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Horario de atencion</label>
+                <input type="text" class="form-control" id="horarioAtencion" style="font-size: 14px;" placeholder="AM-PM">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Quienes somos</label>
+                <input type="text" class="form-control" id="quienesSomos" style="font-size: 14px;" placeholder="Descripcion">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Latitud</label>
+                <input type="number" class="form-control" id="latitud" style="font-size: 14px;" placeholder="1000">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Longitud</label>
+                <input type="number" class="form-control" id="longitud" style="font-size: 14px;" placeholder="1000">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Domicilio</label>
+                <input type="text" class="form-control" id="domicilio" style="font-size: 14px;" placeholder="Mendoza">
+              </div>
+              <div class="form-group">
+                <label for="nombre" style="font-size: 12px; color: gray;">Email</label>
+                <input type="gmail" class="form-control" id="email" style="font-size: 14px;" placeholder="Empresa@gmail.com">
               </div>
             </div>
           </div>
         </div>
-        <!-- Formulario para crear noticia -->
-        <form id="noticiaForm">
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-primary" type="submit">Crear noticia</button>
-          </div>
-        </form>
-
+        <form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="enviarDatos()">Guardar</button>
       </div>
     </div>
   </div>
+</div>
 
   <script src="https://cdn.tiny.cloud/1/8xrnyhh8ngm1n9qkk2ln196xy9qxocubm1cxkkpjn72zbq0z/tinymce/7/tinymce.min.js"
     referrerpolicy="origin"></script>
