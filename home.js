@@ -33,6 +33,8 @@ const load = () => {
 
             const camera_captions = document.querySelectorAll(".camera_caption");
 
+            response.sort((a, b) => b.id - a.id)
+
             for (let i = 0; i < camera_captions.length; i++) {
             
                 const noticia = response[i];
@@ -46,8 +48,6 @@ const load = () => {
 
                 if(noticia !== undefined) {
                     const imagen = document.getElementsByClassName("imgLoaded")[i];
-
-                    console.log(i, imagen, noticia)
 
                     if (imagen !== undefined) {
 
