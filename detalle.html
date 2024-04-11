@@ -20,7 +20,8 @@
   <script src="js/jquery.js"></script>
   <script src="js/jquery-migrate-1.2.1.min.js"></script>
   <script src="js/rd-smoothscroll.min.js"></script>
-  <script src="detalle.js"></script>
+  <script src="https://cdn.tiny.cloud/1/8xrnyhh8ngm1n9qkk2ln196xy9qxocubm1cxkkpjn72zbq0z/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
 
 
   <!--[if lt IE 9]>
@@ -33,6 +34,44 @@
     <script src="js/html5shiv.js"></script>
     <![endif]-->
   <script src='js/device.min.js'></script>
+
+  <style>
+    /* Estilos CSS para el modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      /* Z-index mayor para que esté por encima de otros elementos */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -67,6 +106,7 @@
                 <li style="list-style: none;">
                   <a href="./">LISTA EMPRESAS</a>
                 </li>
+                <button type="button" class="btn btn-primary" id="editar-noticia-btn">Editar Noticia</button>
               </ul>
             </div>
           </nav>
@@ -113,7 +153,7 @@
                   Resumen de la noticia
                 </dt>
                 <hr>
-                <dd id="contenidoHTML">
+                <dd id="contenidoHTMLMain">
                   Contenido HTML de la Noticia
                 </dd>
               </dl>
@@ -142,6 +182,64 @@
   </div>
 
 
+  <!-- Modal editar noticia -->
+  <div id="editarNoticiaModal" class="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarNoticiaModalLabel">Editar Noticia</h5>
+          <button type="button" class="btn-close" id="cerrarModalBtn" aria-label="Close"></button>
+        </div>
+        <form id="editarNoticiaForm">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <h5>Noticia:</h5>
+                <div style="margin-top: 20px;">
+                  <div class="form-group">
+                    <label for="idEmpresa">Empresa</label>
+                    <select name="idEmpresa" id="idEmpresa" required>
+                      <option value="x" selected disabled>Seleccione la empresa a la que pertenece la noticia</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="tituloNoticia">Titulo Noticia</label>
+                    <input type="text" id="tituloNoticia" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="resumenNoticia">Resumen Noticia</label>
+                    <input type="text" id="resumenNoticia" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" id="imagen">
+                  </div>
+                  <div class="form-group">
+                    <label for="publicada">Publicada</label>
+                    <input type="checkbox" id="publicada">
+                  </div>
+                  <div class="form-group">
+                    <textarea id="contenidoHTML"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="fechaPublicacion">Fecha de publicacion</label>
+                    <input type="date" id="fechaPublicacion" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cerrarModalBtn" class="btn btn-secondary">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
@@ -149,6 +247,24 @@
 
   <!-- </script> -->
   <script src="./detalle.js"></script>
+
+  <script src="https://cdn.tiny.cloud/1/8xrnyhh8ngm1n9qkk2ln196xy9qxocubm1cxkkpjn72zbq0z/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+  <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+  <script>
+    tinymce.init({
+      selector: '#contenidoHTML',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ],
+      ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+    });
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

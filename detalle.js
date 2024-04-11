@@ -1,5 +1,4 @@
 const loadDetails = () => {
-
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     console.log(id);
@@ -19,13 +18,21 @@ const loadDetails = () => {
             document.getElementById("tituloNoticia-content").innerHTML = response.tituloNoticia;
             document.getElementById("fechaPublicacion").innerHTML = response.fechaPublicacion;
             document.getElementById("resumenNoticia").innerHTML = response.resumenNoticia;
-            document.getElementById("contenidoHTML").innerHTML = response.contenidoHTML;
+            document.getElementById("contenidoHTMLMain").innerHTML = response.contenidoHTML;
 
+            mostrarModal();
         })
         .catch((err) => {
-
-        })
-
-   
-
+            console.error(err);
+        });
 }
+
+
+
+    
+
+
+
+
+
+
