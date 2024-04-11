@@ -15,7 +15,7 @@ const loadDetails = () => {
             document.getElementById("denominacion-footer").innerHTML = response.empresa.denominacion;
             document.getElementById("denominacion-header").innerHTML = response.empresa.denominacion;
             document.getElementById("tituloNoticia").innerHTML = response.tituloNoticia;
-            document.getElementById("imagenNoticia").src = response.imagenNoticia;
+            document.getElementById("imagenNoticia").setAttribute("src", "picture/" + response.imagenNoticia);
             document.getElementById("tituloNoticia-content").innerHTML = response.tituloNoticia;
             document.getElementById("fechaPublicacion").innerHTML = response.fechaPublicacion;
             document.getElementById("resumenNoticia").innerHTML = response.resumenNoticia;

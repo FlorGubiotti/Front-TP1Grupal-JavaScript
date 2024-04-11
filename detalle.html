@@ -94,15 +94,15 @@
       <section class="well well4">
 
         <div class="container">
-          <center>
-            <div id="imagenNoticia"
-              style="height: 450px; background-image: url('http://localhost:82/template_html/images/page-1_slide1.jpg?1583775512626'); background-repeat: no-repeat;background-size: cover;">
-              <div id="tituloNoticia"
-                style="text-align:left; background-color: rgba(1,1,1,0.5);color: #ffffff;font-size: 16px;line-height: 50px;">
-                Titulo de la Noticia
-              </div>
-            </div>
-          </center>
+          <figure style="position: relative;">
+            <img id="imagenNoticia" src="" alt="Imagen de la Noticia"
+              style="height: 450px; background-repeat: no-repeat;background-size: cover;">
+            <figcaption id="tituloNoticia"
+              style="text-align:left; background-color: rgba(1,1,1,0.5);color: #ffffff;font-size: 16px;line-height: 50px; position: absolute; top: 0; left: 0; padding-left: 30px; padding-right: 30px; ">
+              Titulo de la Noticia
+            </figcaption>
+          </figure>
+
           <h2 id="tituloNoticia-content">Titulo de la Noticia</h2>
           <span id="fechaPublicacion">Fecha Publicacion: 12/02/2020</span>
           <hr>
@@ -130,14 +130,14 @@
   =========================================================-->
     <footer>
       <section class="well1">
-        <div class="container"> 
-              <p class="rights">
-                <span id="denominacion-footer">Denominación Empresa</span>  &#169; <span id="copyright-year"></span>
-                <a href="index-5.html">Privacy Policy</a>
-                <!-- {%FOOTER_LINK} -->
-              </p>          
-        </div> 
-      </section>  
+        <div class="container">
+          <p class="rights">
+            <span id="denominacion-footer">Denominación Empresa</span> &#169; <span id="copyright-year"></span>
+            <a href="index-5.html">Privacy Policy</a>
+            <!-- {%FOOTER_LINK} -->
+          </p>
+        </div>
+      </section>
     </footer>
   </div>
 
@@ -151,7 +151,7 @@
   <script src="./detalle.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
+    document.addEventListener("DOMContentLoaded", function () {
       loadDetails();
     });
   </script>
