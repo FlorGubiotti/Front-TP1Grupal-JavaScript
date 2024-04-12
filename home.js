@@ -37,7 +37,7 @@ const load = () => {
 
             const camera_captions = document.querySelectorAll(".camera_caption");
 
-            response.sort((a, b) => b.id - a.id)
+            // response.sort((a, b) => b.id - a.id)
 
             for (let i = 0; i < camera_captions.length; i++) {
             
