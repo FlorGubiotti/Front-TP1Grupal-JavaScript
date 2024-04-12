@@ -1,3 +1,28 @@
+const eliminarNoticia = async (idNoticia) => {
+    try {
+        const response = await fetch(`http://localhost:8080/noticias/delete/${idNoticia}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Mostrar una alerta o realizar cualquier acción necesaria
+            alert('La empresa se eliminó correctamente.');
+
+            // Recargar la página u otra acción necesaria
+            window.location.href = 'home.html';
+        } else {
+            console.error('Error al eliminar la empresa:', response.status);
+            // Puedes manejar el error de alguna manera aquí
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+        // Puedes manejar el error de alguna manera aquí
+    }
+};
+
 const loadDetails = () => {
     let titulo = '';
     let resumen = '';
@@ -64,6 +89,15 @@ const loadDetails = () => {
         eliminarBtn.addEventListener('click', function() {
             // Abre la modal de confirmar eliminar cuando se haga clic en el botón de eliminar
             $('#eliminarNoticia').modal('show');
+            document.getElementById("nombreNoticiaEliminar").textContent = "¿Deseas eliminar la noticia: '"+titulo+"' ?";
+            const form3 = document.getElementById('eliminaNoticiaForm');
+
+            form3.addEventListener('submit', async function (event) {
+                event.preventDefault(); // Evita que se envíe el formulario automáticamente
+
+                eliminarNoticia(idNotice)
+            })
+
         });
         const editarBtn = document.getElementById('btnEditar');
 
@@ -105,6 +139,7 @@ form.addEventListener('submit', async function (event) {
     console.log(222)
     
 })
+
 function decodeEntities(encodedString) {
     console.log('Cadena codificada:', encodedString); // Verifica si la cadena se pasa correctamente
     const textarea = document.createElement('textarea');
