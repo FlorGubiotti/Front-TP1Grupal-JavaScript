@@ -63,27 +63,31 @@ async function realizarBusqueda(textoBuscado, idEmpresa) {
 
                     // alert("No se encontraron resultados para la búsqueda.");
                 } else {
+                    let cont = 0;
                     // Iterar sobre las noticias y agregarlas a la tabla
                     noticias.forEach(noticia => {
-                        if(noticia.empresa.id == idEmpresa){
-                            console.log(noticia)
-                            const fila = document.createElement('tr');
-                            let url = `detalle.html?id=${noticia.id}`;
-                            fila.innerHTML = `
-                                <td>
-                                    <a href="${url}">
-                                        <img width="250px" class="imgNoticia" src="picture/${noticia.imagenNoticia}" alt="${noticia.tituloNoticia}">
-                                    </a>
-                                </td>
-                                <td width="25"></td>
-                                <td style="text-align:justify;" valign="top">
-                                    <a style="text-align:justify; font-size:20px" href="${url}" class="banner">${noticia.tituloNoticia}</a>
-                                    <div>
-                                        ${noticia.resumenNoticia} <a href="${url}" style="color:blue">Leer Más - ${noticia.fechaPublicacion}</a>
-                                    </div>
-                                </td>
-                            `;
-                            tablaNoticias.appendChild(fila);
+                        if(cont <= 20){
+                            if(noticia.empresa.id == idEmpresa){
+                                cont++;
+                                console.log(noticia)
+                                const fila = document.createElement('tr');
+                                let url = `detalle.html?id=${noticia.id}`;
+                                fila.innerHTML = `
+                                    <td>
+                                        <a href="${url}">
+                                            <img width="250px" class="imgNoticia" src="picture/${noticia.imagenNoticia}" alt="${noticia.tituloNoticia}">
+                                        </a>
+                                    </td>
+                                    <td width="25"></td>
+                                    <td style="text-align:justify;" valign="top">
+                                        <a style="text-align:justify; font-size:20px" href="${url}" class="banner">${noticia.tituloNoticia}</a>
+                                        <div>
+                                            ${noticia.resumenNoticia} <a href="${url}" style="color:blue">Leer Más - ${noticia.fechaPublicacion}</a>
+                                        </div>
+                                    </td>
+                                `;
+                                tablaNoticias.appendChild(fila);
+                            }
                         }
                         
                     });
