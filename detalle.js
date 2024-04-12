@@ -126,9 +126,19 @@ const loadDetails = () => {
                 formData.append('file', inputImagen.files[0]);
                 console.log(fechaEditar)
                 console.log(typeof fechaEditar);
-
-                subirImagenModificar(idNotice, formData, tituloEditar, resumenEditar, contenidoEditar, fechaEditar);
-                console.log(tituloEditar)
+                if(inputImagen.files[0] != undefined){
+                    subirImagenModificar(idNotice, formData, tituloEditar, resumenEditar, contenidoEditar, fechaEditar);
+                    console.log(tituloEditar)
+                }else{
+                    const noticiaModificar = {
+                        tituloNoticia: tituloEditar,
+                        resumenNoticia: resumenEditar,
+                        contenidoHTML: contenidoEditar,
+                        fechaPublicacion: fechaEditar,
+                    };
+                    modificarNoticia(idNotice, noticiaModificar)
+                }
+                
             })
         });
 }
@@ -165,6 +175,10 @@ function modificarNoticia(id, cambios) {
     })
     .then(data => {
         console.log('Noticia modificada:', data);
+        alert("Noticia Moficada")
+        $('#editarNoticia').modal('hide');
+        window.location.reload();
+
         // Realizar alguna acción adicional si es necesario
     })
     .catch(error => {
@@ -197,7 +211,7 @@ function subirImagenModificar(idNoticia, datos, titulo,resumen, contenido, fecha
         modificarNoticia(idNoticia, noticiaModificar)
         // Manejar la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
         console.log('Imagen subida exitosamente:', data);
-        alert('Imagen subida exitosamente');
+        // alert('Imagen subida exitosamente');
         // Redirigir a otra página si es necesario
     })
     .catch(error => {
