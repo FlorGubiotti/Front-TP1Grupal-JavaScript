@@ -3,7 +3,7 @@ const loadDetails = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     console.log(id);
-    document.getElementById("inicioId").setAttribute("href", "home.html?id="+id);
+    document.getElementById("inicioId").setAttribute("href", "index.html");
     document.getElementById("empresa_id").value = id;
 
     fetch("http://localhost:8080/noticias/buscar/" + id)
